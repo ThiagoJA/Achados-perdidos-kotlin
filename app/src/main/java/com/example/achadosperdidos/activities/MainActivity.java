@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        listarObjetos();
+
     }
 
     public void abrirCadastrar(View view) {
@@ -23,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void abrirRecuperarSenha(View view) {
         startActivity(new Intent(this, RecuperarSenhaActivity.class));
+    }
+
+    public void listarObjetos() {
+        startActivity(new Intent(this, ListaObjetosActivity.class));
     }
 
     public void logar(View view) {

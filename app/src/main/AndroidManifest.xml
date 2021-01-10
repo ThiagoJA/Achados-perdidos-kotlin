@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AchadosPerdidos">
-        <activity android:name=".activities.ObjetoActivity"></activity>
+        <activity android:name=".activities.ListaObjetosActivity"></activity>
+        <activity android:name=".activities.RemoveObjActivity" />
+        <activity android:name=".activities.ObjetoActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.RecuperarSenhaActivity" />
 
