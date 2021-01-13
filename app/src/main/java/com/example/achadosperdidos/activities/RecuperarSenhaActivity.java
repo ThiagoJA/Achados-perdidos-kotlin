@@ -11,4 +11,5 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha);
     }
+
 }
