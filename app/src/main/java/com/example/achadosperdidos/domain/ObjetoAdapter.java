@@ -21,24 +21,24 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
 
 
     private Context context;
-    private List<ObjetoDto> lista;
+    private List<ItemDTO> lista;
     private LayoutInflater mInflater;
     private AdapterView.OnItemClickListener onItemClickListener;
 
     private static final String TAG = "UsuarioAdapter";
 
-    public ObjetoAdapter(Context context, List<ObjetoDto> lista,AdapterView.OnItemClickListener onItemClickListener) {
+    public ObjetoAdapter(Context context, List<ItemDTO> lista,AdapterView.OnItemClickListener onItemClickListener) {
         this.context = context;
         this.lista = lista;
         this.onItemClickListener = onItemClickListener;
         this.mInflater = LayoutInflater.from(context);
     }
 
-    public List<ObjetoDto> getLista() {
+    public List<ItemDTO> getLista() {
         return lista;
     }
 
-    public void setLista(List<ObjetoDto> lista) {
+    public void setLista(List<ItemDTO> lista) {
         this.lista = lista;
         notifyDataSetChanged();
     }
@@ -53,12 +53,12 @@ public class ObjetoAdapter extends RecyclerView.Adapter<ObjetoAdapter.ObjetoView
     @Override
     public void onBindViewHolder(@NonNull ObjetoViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: "+position);
-        ObjetoDto objeto = lista.get(position);
+        ItemDTO objeto = lista.get(position);
 
-        holder.nome.setText(objeto.getNome());
+        holder.nome.setText(objeto.getName());
     }
 
-    public ObjetoDto getItem(int position) {
+    public ItemDTO getItem(int position) {
         return lista.get(position);
     }
     @Override

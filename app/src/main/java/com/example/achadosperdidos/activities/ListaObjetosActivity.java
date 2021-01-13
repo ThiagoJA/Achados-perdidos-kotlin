@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.achadosperdidos.R;
+import com.example.achadosperdidos.domain.ItemDTO;
 import com.example.achadosperdidos.domain.ObjetoAdapter;
 import com.example.achadosperdidos.domain.ObjetoAdapter2;
 import com.example.achadosperdidos.domain.ObjetoDto;
@@ -27,7 +28,7 @@ public class ListaObjetosActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private ObjetoAdapter2 mAdapter;
-    private List<ObjetoDto2> listaDeObjetos;
+    private List<ItemDTO> listaDeObjetos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class ListaObjetosActivity extends AppCompatActivity {
 
 
 
-        listaDeObjetos = new ArrayList<ObjetoDto2>();
+        listaDeObjetos = new ArrayList<ItemDTO>();
         mRecyclerView = findViewById(R.id.lista_objetos);
         // Create an adapter and supply the data to be displayed.
         mAdapter = new ObjetoAdapter2(ListaObjetosActivity.this, listaDeObjetos);
@@ -49,7 +50,7 @@ public class ListaObjetosActivity extends AppCompatActivity {
         buscaObjeto();//busca os objetos da API
     }
 
-    void atualizaAdapter(final List<ObjetoDto2> obj) {
+    void atualizaAdapter(final List<ItemDTO> obj) {
         mAdapter.setLista(obj);
         mAdapter.notifyDataSetChanged();
     }
@@ -62,16 +63,16 @@ public class ListaObjetosActivity extends AppCompatActivity {
 //        listaDeObjetos.addAll(Arrays.asList(obj1,obj2,obj3));
 
 
-        RetrofitService.getServico(getApplicationContext()).listar().enqueue(new Callback<List<ObjetoDto2>>() {
+        RetrofitService.getServico(getApplicationContext()).listarObjetos().enqueue(new Callback<List<ItemDTO>>() {
             @Override
-            public void onResponse(Call<List<ObjetoDto2>> call, Response<List<ObjetoDto2>> response) {
+            public void onResponse(Call<List<ItemDTO>> call, Response<List<ItemDTO>> response) {
                 if(response.isSuccessful()){
                     atualizaAdapter(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ObjetoDto2>> call, Throwable t) {
+            public void onFailure(Call<List<ItemDTO>> call, Throwable t) {
                 Log.d("Falhou na busca", "onFailure: " + t.getMessage());
             }
         });

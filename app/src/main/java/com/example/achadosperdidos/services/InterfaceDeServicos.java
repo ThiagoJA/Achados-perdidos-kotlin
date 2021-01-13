@@ -1,6 +1,11 @@
 package com.example.achadosperdidos.services;
 
 
+import com.example.achadosperdidos.domain.Address;
+import com.example.achadosperdidos.domain.AddressDTO;
+import com.example.achadosperdidos.domain.AddressInsertDTO;
+import com.example.achadosperdidos.domain.ItemDTO;
+import com.example.achadosperdidos.domain.ItemInsertDTO;
 import com.example.achadosperdidos.domain.Objeto;
 import com.example.achadosperdidos.domain.ObjetoDto;
 import com.example.achadosperdidos.domain.ObjetoDto2;
@@ -19,18 +24,16 @@ import retrofit2.http.Path;
 
 public interface InterfaceDeServicos {
 
-//    @POST("/auth/login")
-//    Call<TokenDTO> save_objeto(@Body Objeto dto);
+    @POST("/items")
+    Call<ItemDTO> save_objeto(@Body ItemInsertDTO dto);
 
+    @POST("/address")
+    Call<AddressDTO> salva_endereco(@Body AddressInsertDTO dto);
 
-    @GET("/objeto")
-    Call<List<ObjetoDto>> listarObjetos();//lista objetos para deletar um
+    @GET("/items")
+    Call<List<ItemDTO>> listarObjetos();//lista objetos para deletar
 
-    @GET("/objeto/listar")
-    Call<List<ObjetoDto2>> listar();//consulta a lista de objetos cadastrados na API
-
-
-    @DELETE("delete_obj/{id}")
+    @DELETE("items/{id}")
     Call<Void> excluir_objeto(@Path("id") Long id);
 
 }

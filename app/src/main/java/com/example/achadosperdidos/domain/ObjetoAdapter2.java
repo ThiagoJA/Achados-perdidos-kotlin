@@ -18,22 +18,22 @@ import java.util.List;
 public class ObjetoAdapter2 extends RecyclerView.Adapter<ObjetoAdapter2.ObjetoViewHolder> {
 
     private Context context;
-    private List<ObjetoDto2> lista;
+    private List<ItemDTO> lista;
     private LayoutInflater mInflater;
 
     private static final String TAG = "UsuarioAdapter";
 
-    public ObjetoAdapter2(Context context, List<ObjetoDto2> lista) {
+    public ObjetoAdapter2(Context context, List<ItemDTO> lista) {
         this.context = context;
         this.lista = lista;
         this.mInflater = LayoutInflater.from(context);
     }
 
-    public List<ObjetoDto2> getLista() {
+    public List<ItemDTO> getLista() {
         return lista;
     }
 
-    public void setLista(List<ObjetoDto2> lista) {
+    public void setLista(List<ItemDTO> lista) {
         this.lista = lista;
         notifyDataSetChanged();
     }
@@ -48,14 +48,14 @@ public class ObjetoAdapter2 extends RecyclerView.Adapter<ObjetoAdapter2.ObjetoVi
     @Override
     public void onBindViewHolder(@NonNull ObjetoAdapter2.ObjetoViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: "+position);
-        ObjetoDto2 objeto = lista.get(position);
+        ItemDTO objeto = lista.get(position);
 
-        holder.nome.setText(objeto.getNome());
-        holder.descricao.setText(objeto.getDescricao());
-        holder.data.setText(objeto.getData());
+        holder.nome.setText(objeto.getName());
+        holder.descricao.setText(objeto.getDescription());
+        holder.data.setText(objeto.getDate());
     }
 
-    public ObjetoDto2 getItem(int position) {
+    public ItemDTO getItem(int position) {
         return lista.get(position);
     }
     @Override

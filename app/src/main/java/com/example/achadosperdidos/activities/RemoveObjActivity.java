@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.achadosperdidos.R;
+import com.example.achadosperdidos.domain.ItemDTO;
 import com.example.achadosperdidos.domain.Objeto;
 import com.example.achadosperdidos.domain.ObjetoAdapter;
 import com.example.achadosperdidos.domain.ObjetoDto;
@@ -29,14 +30,14 @@ public class RemoveObjActivity extends AppCompatActivity implements AdapterView.
 
     private RecyclerView mRecyclerView;
     private ObjetoAdapter mAdapter;
-    private List<ObjetoDto> listaDeObjetos;
+    private List<ItemDTO> listaDeObjetos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_obj);
 
-        listaDeObjetos = new ArrayList<ObjetoDto>();
+        listaDeObjetos = new ArrayList<ItemDTO>();
         mRecyclerView = findViewById(R.id.remove_obj);
         // Create an adapter and supply the data to be displayed.
         mAdapter = new ObjetoAdapter(RemoveObjActivity.this, listaDeObjetos,this);
@@ -50,7 +51,7 @@ public class RemoveObjActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final ObjetoDto item = mAdapter.getItem(position);
+        final ItemDTO item = mAdapter.getItem(position);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(RemoveObjActivity.this);
         alert.setTitle("");
@@ -71,22 +72,22 @@ public class RemoveObjActivity extends AppCompatActivity implements AdapterView.
         alert.show();
     }
 
-    void atualizaAdapter(final List<ObjetoDto> obj) {
+    void atualizaAdapter(final List<ItemDTO> obj) {
         mAdapter.setLista(obj);
         mAdapter.notifyDataSetChanged();
     }
 
     private void buscaObjeto(){
-        RetrofitService.getServico(getApplicationContext()).listarObjetos().enqueue(new Callback<List<ObjetoDto>>() {
+        RetrofitService.getServico(getApplicationContext()).listarObjetos().enqueue(new Callback<List<ItemDTO>>() {
             @Override
-            public void onResponse(Call<List<ObjetoDto>> call, Response<List<ObjetoDto>> response) {
+            public void onResponse(Call<List<ItemDTO>> call, Response<List<ItemDTO>> response) {
                 if(response.isSuccessful()){
                     atualizaAdapter(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ObjetoDto>> call, Throwable t) {
+            public void onFailure(Call<List<ItemDTO>> call, Throwable t) {
                 Log.d("Falhou na busca", "onFailure: " + t.getMessage());
             }
         });
