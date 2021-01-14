@@ -9,6 +9,7 @@ import com.example.achadosperdidos.domain.ItemInsertDTO;
 import com.example.achadosperdidos.domain.Objeto;
 import com.example.achadosperdidos.domain.ObjetoDto;
 import com.example.achadosperdidos.domain.ObjetoDto2;
+import com.example.achadosperdidos.dto.DtoUser;
 
 import java.util.List;
 
@@ -33,7 +34,16 @@ public interface InterfaceDeServicos {
     @GET("/items")
     Call<List<ItemDTO>> listarObjetos();//lista objetos para deletar
 
-    @DELETE("items/{id}")
+    @DELETE("/items/{id}")
     Call<Void> excluir_objeto(@Path("id") Long id);
+
+    @GET("/users/findByCpf/{cpf}")
+    Call<DtoUser> buscar_cpf(@Path("cpf") String cpf);
+
+    @POST("/users")
+    Call<DtoUser> cadastrar_usuario(@Body DtoUser dtoUser);
+
+    @PUT("/users/{cpf}")
+    Call<DtoUser> alterar_senha(@Path("cpf") String cpf, @Body DtoUser dtoUser);
 
 }

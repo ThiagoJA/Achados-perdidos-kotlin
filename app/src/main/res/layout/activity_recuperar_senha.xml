@@ -33,7 +33,7 @@
         tools:layout_editor_absoluteX="20dp">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/cpf"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -47,7 +47,7 @@
             android:paddingBottom="10dp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/nova_senha"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -63,7 +63,8 @@
         />
 
         <Button
-            android:id="@+id/button2"
+            android:onClick="alterarSenha"
+            android:id="@+id/alterar_senha"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
