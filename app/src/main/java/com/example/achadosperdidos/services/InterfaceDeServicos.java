@@ -40,6 +40,9 @@ public interface InterfaceDeServicos {
     @GET("/users/findByCpf/{cpf}")
     Call<DtoUser> buscar_cpf(@Path("cpf") String cpf);
 
+    @POST("/users/login/{email}/{password}")
+    Call<DtoUser> logar(@Path("email") String email, @Path("password") String password);
+
     @POST("/users")
     Call<DtoUser> cadastrar_usuario(@Body DtoUser dtoUser);
 
