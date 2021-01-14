@@ -35,24 +35,27 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.navigation_search: {
                 getSupportActionBar().setTitle("Buscar");
-                Fragment buscarFragment = BuscarFragment.newInstance();
-                openFragment(buscarFragment);
+                startActivity(new Intent(HomeActivity.this,ListaObjetosActivity.class));
+
+//                Fragment buscarFragment = BuscarFragment.newInstance();
+//                openFragment(buscarFragment);
             break;
             }
             case R.id.navigation_register: {
+                getSupportActionBar().setTitle("Cadastrar");
                   startActivity(new Intent(HomeActivity.this,ObjetoActivity.class));
-//                  startActivity(new Intent(HomeActivity.this,ListaObjetosActivity.class));
-//                  startActivity(new Intent(HomeActivity.this,RemoveObjActivity.class));
 
-//                getSupportActionBar().setTitle("Cadastrar");
+//
 //                Fragment cadastrarFragment = CadastrarFragment.newInstance();
 //                openFragment(cadastrarFragment);
             break;
             }
             case R.id.navigation_listar: {
-                getSupportActionBar().setTitle("Meus cadastros");
-                Fragment listarFragment = ListarFragment.newInstance();
-                openFragment(listarFragment);
+                getSupportActionBar().setTitle("Deletar Objeto");
+                startActivity(new Intent(HomeActivity.this,RemoveObjActivity.class));
+
+//                Fragment listarFragment = ListarFragment.newInstance();
+//                openFragment(listarFragment);
             break;
             }
             case R.id.navigation_logout: {
