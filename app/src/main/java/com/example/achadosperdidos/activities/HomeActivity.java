@@ -12,6 +12,7 @@ import com.example.achadosperdidos.fragments.ListarFragment;
 import com.example.achadosperdidos.fragments.SairFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -39,9 +40,13 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             break;
             }
             case R.id.navigation_register: {
-                getSupportActionBar().setTitle("Cadastrar");
-                Fragment cadastrarFragment = CadastrarFragment.newInstance();
-                openFragment(cadastrarFragment);
+                  startActivity(new Intent(HomeActivity.this,ObjetoActivity.class));
+//                  startActivity(new Intent(HomeActivity.this,ListaObjetosActivity.class));
+//                  startActivity(new Intent(HomeActivity.this,RemoveObjActivity.class));
+
+//                getSupportActionBar().setTitle("Cadastrar");
+//                Fragment cadastrarFragment = CadastrarFragment.newInstance();
+//                openFragment(cadastrarFragment);
             break;
             }
             case R.id.navigation_listar: {
