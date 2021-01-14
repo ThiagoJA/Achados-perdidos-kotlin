@@ -2,6 +2,7 @@ package com.example.achadosperdidos.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,15 +66,15 @@ public class ObjetoActivity extends AppCompatActivity {
                             RetrofitService.getServico(getApplication()).save_objeto(objeto).enqueue(new Callback<ItemDTO>() {
                                 @Override
                                 public void onResponse(Call<ItemDTO> call, Response<ItemDTO> response) {
-                                    Log.d("resposta","onresponse",response.body());
-                                    if (response.isSuccessful()) {
-
-                                    }
+                                    Intent intent = new Intent(ObjetoActivity.this, SucessoObjActivity.class);
+                                    startActivity(intent);
                                 }
 
                                 @Override
                                 public void onFailure(Call<ItemDTO> call, Throwable t) {
                                     Log.d("resposta","ononFailure" + t.getMessage());
+                                    Intent intent = new Intent(ObjetoActivity.this, ErroObjActivity.class);
+                                    startActivity(intent);
                                 }
                             });
 
