@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitService {
 
     private static Context context;
-    private String baseUrl = "http://192.168.100.105:8080/";
+    private String baseUrl = "http://ec2-3-21-40-210.us-east-2.compute.amazonaws.com:8080/";
     private InterfaceDeServicos api;
     private static RetrofitService instancia;
 

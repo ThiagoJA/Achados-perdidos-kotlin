@@ -51,28 +51,31 @@ public class ObjetoActivity extends AppCompatActivity {
                 AddressInsertDTO endereco = new AddressInsertDTO(0L, Integer.parseInt(cep.getText().toString()),
                         cidade.getText().toString(),bairro.getText().toString(),logradouro.getText().toString());
 
-                ItemInsertDTO objeto = new ItemInsertDTO(0L ,nome_objeto.getText().toString(),desc_obj.getText().toString(),
-                         date_objeto.getText().toString(), Integer.parseInt(recomp_obj.getText().toString()));
 
-                RetrofitService.getServico(getApplication()).save_objeto(objeto).enqueue(new Callback<ItemDTO>() {
-                    @Override
-                    public void onResponse(Call<ItemDTO> call, Response<ItemDTO> response) {
-                        Log.d("resposta","onresponse",response.body());
-                        if (response.isSuccessful()) {
 
-                        }
-                    }
 
-                    @Override
-                    public void onFailure(Call<ItemDTO> call, Throwable t) {
-                        Log.d("resposta","ononFailure" + t.getMessage());
-                    }
-                });
                 RetrofitService.getServico(getApplicationContext()).salva_endereco(endereco).enqueue(new Callback<AddressDTO>() {
                     @Override
                     public void onResponse(Call<AddressDTO> call, Response<AddressDTO> response) {
                         Log.d("resposta","onresponse",response.body());
                         if (response.isSuccessful()) {
+                            ItemInsertDTO objeto = new ItemInsertDTO(response.body().getId() ,nome_objeto.getText().toString(),desc_obj.getText().toString(),
+                                    date_objeto.getText().toString(), Integer.parseInt(recomp_obj.getText().toString()));
+
+                            RetrofitService.getServico(getApplication()).save_objeto(objeto).enqueue(new Callback<ItemDTO>() {
+                                @Override
+                                public void onResponse(Call<ItemDTO> call, Response<ItemDTO> response) {
+                                    Log.d("resposta","onresponse",response.body());
+                                    if (response.isSuccessful()) {
+
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ItemDTO> call, Throwable t) {
+                                    Log.d("resposta","ononFailure" + t.getMessage());
+                                }
+                            });
 
                         }
                     }
@@ -85,6 +88,17 @@ public class ObjetoActivity extends AppCompatActivity {
                 });
             }
         });
-
+        limpar_campos();
+    }
+    private void limpar_campos(){
+        System.out.println("testando");
+        nome_objeto.setText("");
+        desc_obj.setText("");
+        date_objeto.setText("");
+        recomp_obj.setText("");
+        logradouro.setText("");
+        bairro.setText("");
+        cep.setText("");
+        cidade.setText("");
     }
 }
